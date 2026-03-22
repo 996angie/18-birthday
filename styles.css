@@ -82,11 +82,11 @@ section,
 
 .big18 {
     font-size: 2.5rem;
-    background: linear-gradient(45deg, #d4af37, #fff0c2);
+    /* background: linear-gradient(45deg, #d4af37, #fff0c2);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glow 2s ease-in-out infinite alternate; */
 }
 
 .btn {
