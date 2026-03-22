@@ -1,0 +1,338 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 270px;
+}
+
+body {
+    font-family: "Amita", serif;
+    background: #000;
+    color: #f5e6c8;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+}
+
+a {
+    text-decoration: none;
+}
+
+section,
+.invite,
+.countdown-section,
+.rsvp {
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background: #000 center / cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.8));
+}
+
+.hero-top {
+    z-index: 2;
+    margin-bottom: auto;
+    white-space: pre-wrap;
+    font-family: "Corinthia", cursive;
+    font-size: 3rem;
+}
+
+.hero-bottom {
+    z-index: 2;
+    margin-top: auto;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Invite */
+
+.invite-top {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.eighteen-number {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto 20px;
+    background: url("images/18.png") center / contain no-repeat;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.big18 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #d4af37, #fff0c2);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    padding: 10px 20px 10px 0;
+    border: none;
+    border-radius: 20px;
+    background: #d4af37;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pin {
+    display: inline-block;
+    width: 3.5rem;
+    height: 2.5rem;
+    background: url("images/pin.png") center / contain no-repeat;
+}
+
+.cheers {
+    width: 100%;
+    height: 22rem;
+    font-size: 2.5rem;
+    background: url("images/cheers.png") center no-repeat;
+    background-size: contain;
+    animation: float 2s infinite ease-in-out;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.ornament-decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.ornament-decor::before,
+.ornament-decor::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cda33a, transparent);
+}
+
+.diamond-decor {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    border: 1px solid #cda33a;
+}
+
+/* Royal Noir card */
+
+.royal-noir {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    background: #111;
+}
+
+.royal-noir .card {
+    position: relative;
+    overflow: hidden;
+    width: 360px;
+    color: #f4d88c;
+    background: linear-gradient(180deg, #050505, #12100c);
+    border: 1px solid rgba(205, 163, 58, 0.25);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+
+.royal-noir .card::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(205, 163, 58, 0.18);
+    pointer-events: none;
+}
+
+.royal-noir .top {
+    position: relative;
+    height: 90px;
+    background: linear-gradient(180deg, #060606, #15120d);
+}
+
+.royal-noir .top::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(255, 255, 255, 0.08) 0 2px,
+        transparent 2px 12px
+    );
+}
+
+.royal-noir .top::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    left: 20px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cda33a, transparent);
+}
+
+.royal-noir .crest {
+    position: absolute;
+    top: 26px;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(205, 163, 58, 0.4);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(205, 163, 58, 0.2), rgba(0, 0, 0, 0.4));
+    font-size: 1rem;
+}
+
+.royal-noir .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid rgba(205, 163, 58, 0.2);
+    border-bottom: 1px solid rgba(205, 163, 58, 0.2);
+    background: linear-gradient(180deg, #0d0b09, #16120e);
+}
+
+.royal-noir .split div {
+    padding: 22px 10px;
+    text-align: center;
+}
+
+.royal-noir .split div + div {
+    border-left: 1px solid rgba(205, 163, 58, 0.3);
+}
+
+.royal-noir .small {
+    display: block;
+    font-size: 1rem;
+}
+
+.royal-noir strong {
+    display: block;
+    font-size: 2.6rem;
+    color: #f1d281;
+}
+
+.royal-noir .content {
+    padding: 36px 24px;
+    text-align: center;
+}
+
+.royal-noir .ornament {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.royal-noir .ornament::before,
+.royal-noir .ornament::after {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cda33a, transparent);
+}
+
+.royal-noir .diamond {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    border: 1px solid #cda33a;
+}
+
+.royal-noir h2 {
+    margin: 0 0 10px;
+    font-size: 2.4rem;
+}
+
+.royal-noir .tag {
+    margin-bottom: 22px;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    opacity: 0.7;
+}
+
+.royal-noir .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border: 1px solid rgba(205, 163, 58, 0.5);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #17130d, #2c2110);
+    color: #fff6df;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.royal-noir .footer {
+    padding: 18px;
+    background: linear-gradient(180deg, #0a0907, #040403);
+    text-align: center;
+    font-size: 1.05rem;
+    letter-spacing: 0.15em;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px #d4af37);
+    }
+    to {
+        filter: drop-shadow(0 0 20px #d4af37);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}

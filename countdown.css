@@ -1,0 +1,133 @@
+ .gold-flip {
+     --gold1: #fff4c8;
+     --gold2: #e7c15a;
+     --gold3: #b88419;
+     --dark1: #22180a;
+     --dark2: #120d07;
+ }
+
+ .gold-flip * {
+     box-sizing: border-box;
+     font-family: Arial, Helvetica, sans-serif;
+ }
+
+ /* 👉 OVO JE KLJUČNO — VERTIKALNO */
+ .gold-flip.vertical .countdown {
+     display: flex;
+     flex-direction: column;
+     gap: 18px;
+     align-items: center;
+ }
+
+ .gold-flip .unit {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     gap: 6px;
+ }
+
+ .gold-flip .label {
+     font-size: 11px;
+     letter-spacing: 2px;
+     color: var(--gold2);
+     text-transform: uppercase;
+ }
+
+ /* CARD */
+ .gold-flip .flip-card {
+     position: relative;
+     width: 90px;
+     height: 100px;
+     perspective: 1000px;
+     border-radius: 12px;
+     box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+ }
+
+ .gold-flip .flip-card::after {
+     content: "";
+     position: absolute;
+     top: 50%;
+     width: 100%;
+     height: 2px;
+     background: rgba(0, 0, 0, .4);
+     z-index: 5;
+ }
+
+ .gold-flip .card-face {
+     position: absolute;
+     width: 100%;
+     height: 50%;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+     background: linear-gradient(180deg, var(--dark1), var(--dark2));
+ }
+
+ .gold-flip .card-face span {
+     font-size: 48px;
+     font-weight: 900;
+     color: var(--gold1);
+ }
+
+ /* TOP */
+ .gold-flip .static-top,
+ .gold-flip .flip-top {
+     top: 0;
+     align-items: flex-end;
+ }
+
+ .gold-flip .static-top span,
+ .gold-flip .flip-top span {
+     transform: translateY(50%);
+ }
+
+ /* BOTTOM */
+ .gold-flip .static-bottom,
+ .gold-flip .flip-bottom {
+     bottom: 0;
+     align-items: flex-start;
+ }
+
+ .gold-flip .static-bottom span,
+ .gold-flip .flip-bottom span {
+     transform: translateY(-50%);
+ }
+
+ /* ANIMACIJA */
+ .gold-flip .flip-top,
+ .gold-flip .flip-bottom {
+     backface-visibility: hidden;
+     transform-style: preserve-3d;
+     visibility: hidden;
+ }
+
+ .gold-flip .flip-top {
+     transform-origin: bottom;
+ }
+
+ .gold-flip .flip-bottom {
+     transform-origin: top;
+     transform: rotateX(90deg);
+ }
+
+ .gold-flip .flip-card.play .flip-top {
+     visibility: visible;
+     animation: flipTop .35s forwards;
+ }
+
+ .gold-flip .flip-card.play .flip-bottom {
+     visibility: visible;
+     animation: flipBottom .35s .35s forwards;
+ }
+
+ @keyframes flipTop {
+     to {
+         transform: rotateX(-90deg);
+     }
+ }
+
+ @keyframes flipBottom {
+     to {
+         transform: rotateX(0deg);
+     }
+ }

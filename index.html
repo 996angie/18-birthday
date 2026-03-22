@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pozivnica</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amita:wght@300;400&family=Corinthia&display=block"
+    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="countdown.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <style>
+  </style>
+</head>
+
+<body>
+
+  <canvas id="confetti"></canvas>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <h1 class="hero-top"></h1>
+    <h2 class="hero-bottom">TE <h2>
+  </section>
+
+  <!-- INVITE SECTION -->
+  <div class="invite">
+    <h4 class="invite-top">na žurku povodom proslave</h4>
+    <div class="eighteen-number"></div>
+    <div class="big18">ROĐENDANA</div>
+  </div>
+  <br>
+  <br>
+
+  <div class="royal-noir">
+    <div class="card">
+      <div class="split">
+        <div>
+          <span class="small">18. april</span>
+          <strong>2026</strong>
+        </div>
+        <div>
+          <span class="small">u</span>
+          <strong>19h</strong>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="ornament"><span class="diamond"></span></div>
+        <h2>Zeleni vir</h2>
+        <a href="https://maps.app.goo.gl/F1GNyYh7GFw3oPc4A" target="_blank" class="btn">
+          <span class="pin"></span>
+          Otvori mapu
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- COUNTDOWN AND RSVP -->
+  <div class="countdown-section">
+    <div>Vidimo se za</div>
+    <div class="gold-flip vertical">
+      <div class="countdown">
+
+        <div class="unit">
+          <div class="flip-card" id="gf-days-card">
+            <div class="card-face static-top"><span id="gf-days-top">00</span></div>
+            <div class="card-face static-bottom"><span id="gf-days-bottom">00</span></div>
+            <div class="card-face flip-top"><span id="gf-days-flip-top">00</span></div>
+            <div class="card-face flip-bottom"><span id="gf-days-flip-bottom">00</span></div>
+          </div>
+          <div class="label">Dana</div>
+        </div>
+
+        <div class="unit">
+          <div class="flip-card" id="gf-hours-card">
+            <div class="card-face static-top"><span id="gf-hours-top">00</span></div>
+            <div class="card-face static-bottom"><span id="gf-hours-bottom">00</span></div>
+            <div class="card-face flip-top"><span id="gf-hours-flip-top">00</span></div>
+            <div class="card-face flip-bottom"><span id="gf-hours-flip-bottom">00</span></div>
+          </div>
+          <div class="label">Sati</div>
+        </div>
+
+        <div class="unit">
+          <div class="flip-card" id="gf-minutes-card">
+            <div class="card-face static-top"><span id="gf-minutes-top">00</span></div>
+            <div class="card-face static-bottom"><span id="gf-minutes-bottom">00</span></div>
+            <div class="card-face flip-top"><span id="gf-minutes-flip-top">00</span></div>
+            <div class="card-face flip-bottom"><span id="gf-minutes-flip-bottom">00</span></div>
+          </div>
+          <div class="label">Minuta</div>
+        </div>
+
+        <div class="unit">
+          <div class="flip-card" id="gf-seconds-card">
+            <div class="card-face static-top"><span id="gf-seconds-top">00</span></div>
+            <div class="card-face static-bottom"><span id="gf-seconds-bottom">00</span></div>
+            <div class="card-face flip-top"><span id="gf-seconds-flip-top">00</span></div>
+            <div class="card-face flip-bottom"><span id="gf-seconds-flip-bottom">00</span></div>
+          </div>
+          <div class="label">Sekundi</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <div class="ornament-decor"><span class="diamond-decor"></span></div>
+
+  <div class="rsvp">Dolazak potvrditi do 10. aprila</div>
+  <div class="cheers"></div>
+
+
+  <script>
+
+    const params = new URLSearchParams(window.location.search);
+    const theme = params.get('slavljenik');
+    console.log(theme);
+
+    window.onload = () => {
+      let heroElem = document.getElementById('hero');
+      let nameElem = document.getElementsByClassName('hero-top');
+      let invitationElem = document.getElementsByClassName('hero-bottom');
+      let data = getPersonData(theme);
+      heroElem.style.backgroundImage = `url(images/${data.image}.png)`;
+      nameElem[0].innerText = data.name;
+      invitationElem[0].innerText = data.invitation;
+
+    };
+
+    function getPersonData(theme) {
+      let data = {
+        image: 'masaivukasin',
+        name: 'MAŠA  &  VUKAŠIN',
+        invitation: 'TE POZIVAJU'
+      };
+      switch (theme) {
+        case 'masa': {
+          data.image = 'masa';
+          data.name = 'MAŠA',
+            data.invitation = 'TE POZIVA'
+        }
+          break;
+        case 'vukasin': {
+          data.image = 'vukasin';
+          data.name = 'VUKAŠIN',
+            data.invitation = 'TE POZIVA'
+        }
+      }
+      return data;
+    }
+
+    /* REVEAL */
+    const lines = document.querySelectorAll('.line');
+    setTimeout(() => {
+      lines.forEach((el, i) => {
+        setTimeout(() => el.classList.add('show'), i * 200);
+      });
+    }, 500);
+
+    window.addEventListener("scroll", () => {
+      const y = window.scrollY;
+      document.getElementById("hero").style.backgroundPositionY = y * 0.5 + "px";
+    });
+
+    /* HEART CONFETTI */
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let pieces = [];
+    for (let i = 0; i < 60; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 8 + 4,
+        speed: Math.random() * 1.5 + 0.5
+      });
+    }
+
+    function drawHeart(x, y, size) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.bezierCurveTo(x, y - size / 2, x - size, y - size / 2, x - size, y);
+      ctx.bezierCurveTo(x - size, y + size / 2, x, y + size, x, y + size * 1.5);
+      ctx.bezierCurveTo(x, y + size, x + size, y + size / 2, x + size, y);
+      ctx.bezierCurveTo(x + size, y - size / 2, x, y - size / 2, x, y);
+      ctx.fill();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        ctx.fillStyle = Math.random() > 0.5 ? "#d4af37" : "#f5e6c8";
+        drawHeart(p.x, p.y, p.size / 4);
+        p.y += p.speed;
+        p.x += Math.sin(p.y * 0.01);
+        if (p.y > canvas.height) p.y = -10;
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+
+
+  </script>
+  <script src="countdown.js"></script>
+</body>
+
+</html>
