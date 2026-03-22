@@ -77,7 +77,7 @@ section,
     height: 15rem;
     margin: 0 auto 20px;
     background: url("images/18.png") center / contain no-repeat;
-    animation: glow 2s ease-in-out infinite alternate;
+    /* animation: glow 2s ease-in-out infinite alternate; */
 }
 
 .big18 {
